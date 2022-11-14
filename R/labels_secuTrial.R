@@ -44,7 +44,7 @@
 #' # get labels for sae, treatment and surgeries forms
 #' labels <- labels_secuTrial(sT_export, form = c("sae", "treatment", "surgeries"))
 #'
-labels_secuTrial <- function(object, form = NULL) {
+labels_secuTrial <- function(object, form = NULL, multiple_labels_flag) {
   it <- object[[object$export_options$meta_names$items]]
   if (!is.null(form)) {
     if (!object$export_options$duplicate_meta) {
@@ -122,7 +122,7 @@ label_secuTrial.secuTrialdata <- function(object, ...) {
   # this happens when the label is changed in the implementation
   # of the CDMA. The old and the new state of fflabel differ thus
   # both state are added and the label can be longer than 1
-  if (any(duplicated(it[, c("ffcolname", "formtablename")]))) {
+  if (multiple_labels_flag && any(duplicated(it[, c("ffcolname", "formtablename")]))) {
     # prep for specific warning
     longer_one_vars <- it$ffcolname[which(duplicated(it[, c("ffcolname", "formtablename")]))]
     longer_one_forms <- it$formtablename[which(duplicated(it[, c("ffcolname", "formtablename")]))]

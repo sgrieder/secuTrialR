@@ -136,8 +136,7 @@ bmd_export
 ```
 
     ## secuTrial data imported from:
-    ## /Users/runner/work/_temp/Library/secuTrialR/extdata/sT_exports/BMD/s_export_CSV-
-    ## xls_BMD_short_en_utf8.zip 
+    ## /Users/runner/work/_temp/Library/secuTrialR/extdata/sT_exports/BMD/s_export_CSV-xls_BMD_short_en_utf8.zip 
     ##  table nrow ncol  meta original_name
     ##     vp    1   10  TRUE        vp.xls
     ##   vpfs    1    2  TRUE      vpfs.xls

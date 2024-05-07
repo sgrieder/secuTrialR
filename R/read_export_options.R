@@ -164,7 +164,7 @@ read_export_options <- function(data_dir) {
     meta_available[entry] <- .construct_metaname(entry, meta_names, file_tag, file_extension) %in% files$Name
   }
 
-  # find form data separator ----
+  # find form data separator and enclosure ----
   if (is_zip) {
     file_con <- unz(data_dir, files$Name[!grepl("html$", files$Name)][1])
     header <- readLines(file_con, 1)
@@ -172,6 +172,8 @@ read_export_options <- function(data_dir) {
   } else if (!is_zip) {
     header <- readLines(file.path(data_dir, files$Name[!grepl("html$", files$Name)][1]), 1)
   }
+  quote <- substr(header, 1, 1)
+  header <- gsub(quote,1,1)
   if (grepl(",", header)) {
     sep <- ","
   } else if (grepl("'", header)) {

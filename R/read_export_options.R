@@ -173,7 +173,7 @@ read_export_options <- function(data_dir) {
     header <- readLines(file.path(data_dir, files$Name[!grepl("html$", files$Name)][1]), 1)
   }
   quote <- substr(header, 1, 1)
-  header <- gsub(quote,1,1)
+  header <- gsub(quote, "" , header)
   if (grepl(",", header)) {
     sep <- ","
   } else if (grepl("'", header)) {

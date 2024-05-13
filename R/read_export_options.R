@@ -184,6 +184,8 @@ read_export_options <- function(data_dir) {
     sep <- "\t"
   } else if (grepl("@", header)) {
     sep <- "@"
+  } else if (grepl("\"", header)) {
+    sep <- "\""
   } else {
     stop("Error: Field separator could not be retrieved.")
     return(NULL)
@@ -256,6 +258,7 @@ read_export_options <- function(data_dir) {
 
   # return object ----
   study_options <- list(sep = sep,
+                        quote = quote,
                         date_format = date_format,
                         datetime_format = datetime_format,
                         date_format_meta = date_format_meta,
@@ -307,6 +310,12 @@ print.secuTrialoptions <- function(x, ...) {
   if (x$short_names) cat("Exported with short names \n")
   if (!x$short_names) cat(paste("File names appended with:", x$file_end, "\n"))
   cat(paste("File extension:", x$extension, "\n"))
+  # Print " and tab with escape char
+  if(grepl("\"", x$quote)) x$quote <- "\\\""
+  if(grepl("\t", x$quote)) x$quote <- "\\t"
+  if(grepl("\"", x$sep)) x$sep <- "\\\""
+  if(grepl("\t", x$sep)) x$sep <- "\\t"
+  cat(paste0("Enclosure: '", x$quote, "'\n"))
   cat(paste0("Seperator: '", x$sep, "'\n"))
   cat(paste(length(x$all_files), "files exported\n"))
   cat(paste("  including", sum(unlist(x$meta_available)), "metadata tables\n"))

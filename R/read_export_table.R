@@ -81,10 +81,9 @@ read_export_table <- function(data_dir, file_name, export_options,
 
   # ISO encoding must be names "latin1"
   curr_encoding <- export_options$encoding
-  ## if (curr_encoding == "ISO-8859-1" | curr_encoding == "ISO-8859-15") {
-  ##   curr_encoding <- "latin1"
-  ##   warning("ISO-8859-1 encoding detected. Strings may not be interpreted correctly")
-  ## }
+  if (curr_encoding == "ISO-8859-1" | curr_encoding == "ISO-8859-15") {
+    curr_encoding <- "latin1"
+  }
 
   if (export_options$is_zip) {
     archive_con <- unz(data_dir, file_name)
@@ -99,19 +98,15 @@ read_export_table <- function(data_dir, file_name, export_options,
   # empty cells at the end of some rows
   # In such a case, fill rows to make table rectangular
   # (analogous to fill = TRUE in read.table())
-
   nsep <- sapply(table_lines, function(x) stringr::str_count(x, paste0(quote,sep,quote)), USE.NAMES = FALSE)
   if (any(nsep) != max(nsep)) {
     table_lines[nsep != max(nsep)] <- paste0(table_lines[nsep != max(nsep)], sep, quote, quote)
   }
 
-  #Encoding(table_lines) <- curr_encoding
-  
   loaded_table <- readr::read_delim(file = I(table_lines),
                                     na = export_options$na.strings,
                                     delim = sep,
                                     quote = quote,
-                                    #locale = readr::locale(encoding = curr_encoding),
                                     # do not attempt to change the names of any last/empty column
                                     name_repair = "minimal",
                                     # do not convert columns

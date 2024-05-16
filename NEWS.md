@@ -1,3 +1,7 @@
+# secuTrialR 1.3.1
+
+* `build_secuTrial_url()` now has optional parameter `prefix` with default `"apps/WebObjects/"`. (#263)
+
 # secuTrialR 1.3.0
 
 * bug fix to read escaped enclosure characters in free text items, e.g. `\"` (#220, #261)

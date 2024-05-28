@@ -1,3 +1,7 @@
+# secuTrialR 1.2.1
+
+* clear some notes and warnings in preparation for CRAN submission (#265)
+
 # secuTrialR 1.2.0
 
 * `write_secuTrial()` no longer allows `format = "sas"` due to deprecation of write_sas in `haven` (version 2.5.2).

@@ -65,6 +65,7 @@ factorize_secuTrial.secuTrialdata <- function(object, ...) {
 # #' @examples
 # # data.frame method
 # nolint end
+#' @export
 factorize_secuTrial.data.frame <- function(data, cl, form, items, short_names) {
   # character reformatting
   if (!is.character(cl$column)) cl$column <- as.character(cl$column)
@@ -160,6 +161,7 @@ factorize_secuTrial.data.frame <- function(data, cl, form, items, short_names) {
 # #'
 # #' @examples
 # nolint end
+#' @export
 factorize_secuTrial.numeric <- function(var, lookup) {
   lookup <- unique(lookup)
   f <- factor(var, lookup$code, lookup$value)
@@ -169,6 +171,7 @@ factorize_secuTrial.numeric <- function(var, lookup) {
 }
 
 # #' @rdname factorize
+#' @export
 factorize_secuTrial.logical <- function(var, lookup) {
   var <- as.numeric(var)
   f <- factor(var, lookup$code, lookup$value)
@@ -178,6 +181,7 @@ factorize_secuTrial.logical <- function(var, lookup) {
 }
 
 # #' @rdname factorize
+#' @export
 factorize_secuTrial.character <- function(var, lookup) {
   f <- factor(var, lookup$value, lookup$value)
   if (!is.null(label(var))) label(f) <- label(var)

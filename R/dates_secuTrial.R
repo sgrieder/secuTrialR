@@ -28,6 +28,7 @@
 dates_secuTrial <- function(object, ...) UseMethod("dates_secuTrial", object)
 datetimes_secuTrial <- function(object, ...) UseMethod("datetimes_secuTrial", object)
 
+
 #' @rdname dates_secuTrial
 #' @export
 dates_secuTrial.secuTrialdata <- function(object, ...) {
@@ -49,6 +50,7 @@ dates_secuTrial.secuTrialdata <- function(object, ...) {
 # @param data data.frame
 # @param datevars string consisting of variables with dates
 # @param format format of dates (typically taken from \code{object$export_options$date_format})
+#' @export
 dates_secuTrial.data.frame <- function(data, datevars, timevars, dateformat, datetimeformat, form, warn = FALSE) {
   warn_msg <- ""
   datevars <- datevars[datevars %in% names(data)]
@@ -91,6 +93,7 @@ dates_secuTrial.data.frame <- function(data, datevars, timevars, dateformat, dat
 
 # @rdname dates_secuTrial
 # @param var date variable to be converted
+#' @export
 dates_secuTrial.character <- function(var, format) {
   # some export types probably return strings
   d <- as.Date(var, format = format)
@@ -98,6 +101,7 @@ dates_secuTrial.character <- function(var, format) {
   if (!is.null(units(var))) units(d) <- units(var)
   d
 }
+#' @export
 datetimes_secuTrial.character <- function(var, format) {
   # some export types probably return strings
   d <- as.POSIXct(var, format = format)
@@ -106,6 +110,7 @@ datetimes_secuTrial.character <- function(var, format) {
   d
 }
 # @rdname dates_secuTrial
+#' @export
 dates_secuTrial.factor <- function(var, format) {
   # depending on options, strings might be converted to factors
   # convert to string
@@ -114,6 +119,7 @@ dates_secuTrial.factor <- function(var, format) {
   if (!is.null(units(var))) units(d) <- units(var)
   d
 }
+#' @export
 datetimes_secuTrial.factor <- function(var, format) {
   # depending on options, strings might be converted to factors
   # convert to string
@@ -123,6 +129,7 @@ datetimes_secuTrial.factor <- function(var, format) {
   d
 }
 # @rdname dates_secuTrial
+#' @export
 dates_secuTrial.integer <- function(var, format) {
   # this is the default type
   # convert to string
@@ -131,6 +138,7 @@ dates_secuTrial.integer <- function(var, format) {
   if (!is.null(units(var))) units(d) <- units(var)
   d
 }
+#' @export
 datetimes_secuTrial.integer <- function(var, format) {
   # this is the default type
   # convert to string
@@ -140,6 +148,7 @@ datetimes_secuTrial.integer <- function(var, format) {
   d
 }
 # @rdname dates_secuTrial
+#' @export
 dates_secuTrial.numeric <- function(var, format) {
   # this is the default type
   # convert to string
@@ -148,6 +157,7 @@ dates_secuTrial.numeric <- function(var, format) {
   if (!is.null(units(var))) units(d) <- units(var)
   d
 }
+#' @export
 datetimes_secuTrial.numeric <- function(var, format) {
   # this is the default type
   # convert to string
@@ -157,6 +167,7 @@ datetimes_secuTrial.numeric <- function(var, format) {
   d
 }
 # @rdname dates_secuTrial
+#' @export
 dates_secuTrial.logical <- function(var, format) {
   # this happens when the variable is empty
   # convert to string to get (empty) Date object
@@ -165,6 +176,7 @@ dates_secuTrial.logical <- function(var, format) {
   if (!is.null(units(var))) units(d) <- units(var)
   d
 }
+#' @export
 datetimes_secuTrial.logical <- function(var, format) {
   # this happens when the variable is empty
   # convert to string to get (empty) Date object
@@ -174,11 +186,13 @@ datetimes_secuTrial.logical <- function(var, format) {
   d
 }
 # @rdname dates_secuTrial
+#' @export
 dates_secuTrial.Date <- function(var, format) {
   # in case a variable is already a date
   warning(var, " is already a Date")
   var
 }
+#' @export
 datetimes_secuTrial.POSIXct <- function(var, format) {
   # in case a variable is already a date
   warning(var, " is already a POSIXct")

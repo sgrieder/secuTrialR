@@ -148,6 +148,7 @@ label_secuTrial.secuTrialdata <- function(object, ...) {
   return(object)
 }
 
+#' @export
 label_secuTrial.data.frame <- function(data, it) {
   it <- it[it$ffcolname %in% names(data), ]
   for (i in names(data)[names(data) %in% it$ffcolname]) {

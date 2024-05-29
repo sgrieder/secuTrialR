@@ -35,7 +35,7 @@ Authors@R:
              family = "Sluka",
              role = c("ctb"))
              )
-Maintainer: Alan G. Haynes <alan.haynes@ctu.unibe.ch>
+Maintainer: Alan G. Haynes <alan.haynes@unibe.ch>
 Description: Seamless and standardized interaction with data
     exported from the clinical data management system (CDMS)
     'secuTrial'<https://www.secutrial.com>.

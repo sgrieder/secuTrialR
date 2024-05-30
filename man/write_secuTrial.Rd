@@ -10,18 +10,16 @@ write_secuTrial(object, ...)
 
 \method{write_secuTrial}{secuTrialdata}(object, format = "dta", metadata = FALSE, ...)
 
-\method{write_secuTrial}{data.frame}(df, filename, path = "", format = "dta", ...)
+\method{write_secuTrial}{data.frame}(object, filename, path = "", format = "dta", ...)
 }
 \arguments{
-\item{object}{\code{secuTrialdata} object}
+\item{object}{a data.frame}
 
 \item{...}{further parameters}
 
 \item{format}{format in which to save the export (one of "dta", "sav", "xpt")}
 
 \item{metadata}{if TRUE then metadate files will also be written}
-
-\item{df}{a data.frame}
 
 \item{filename}{file name}
 

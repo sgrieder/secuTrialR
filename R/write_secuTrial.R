@@ -45,7 +45,6 @@ write_secuTrial.secuTrialdata <- function(object, format = "dta", metadata = FAL
 }
 
 #' @name write_secuTrial
-#' @param object a data.frame
 #' @param filename file name
 #' @param path directory where the files should be saved
 #' @export

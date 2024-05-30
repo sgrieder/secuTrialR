@@ -66,7 +66,7 @@ factorize_secuTrial.secuTrialdata <- function(object, ...) {
 # # data.frame method
 # nolint end
 #' @export
-factorize_secuTrial.data.frame <- function(object, cl, form, items, short_names) {
+factorize_secuTrial.data.frame <- function(object, cl, form, items, short_names, ...) {
   # character reformatting
   if (!is.character(cl$column)) cl$column <- as.character(cl$column)
   if (!is.character(items$ffcolname)) items$ffcolname <- as.character(items$ffcolname)
@@ -162,7 +162,7 @@ factorize_secuTrial.data.frame <- function(object, cl, form, items, short_names)
 # #' @examples
 # nolint end
 #' @export
-factorize_secuTrial.numeric <- function(object, lookup) {
+factorize_secuTrial.numeric <- function(object, lookup, ...) {
   lookup <- unique(lookup)
   f <- factor(object, lookup$code, lookup$value)
   if (!is.null(label(object))) label(f) <- label(object)
@@ -172,7 +172,7 @@ factorize_secuTrial.numeric <- function(object, lookup) {
 
 # #' @rdname factorize
 #' @export
-factorize_secuTrial.logical <- function(object, lookup) {
+factorize_secuTrial.logical <- function(object, lookup, ...) {
   object <- as.numeric(object)
   f <- factor(object, lookup$code, lookup$value)
   if (!is.null(label(object))) label(f) <- label(object)
@@ -182,7 +182,7 @@ factorize_secuTrial.logical <- function(object, lookup) {
 
 # #' @rdname factorize
 #' @export
-factorize_secuTrial.character <- function(object, lookup) {
+factorize_secuTrial.character <- function(object, lookup, ...) {
   f <- factor(object, lookup$value, lookup$value)
   if (!is.null(label(object))) label(f) <- label(object)
   if (!is.null(units(object))) units(f) <- units(object)

@@ -1,3 +1,7 @@
+# secuTrialR 1.3.2
+
+* clear some notes and warnings in preparation for CRAN submission (#265)
+
 # secuTrialR 1.3.1
 
 * `build_secuTrial_url()` now has optional parameter `prefix` with default `"apps/WebObjects/"`. (#263)

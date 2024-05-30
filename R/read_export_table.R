@@ -69,6 +69,7 @@
 # }
 # nolint end
 #
+#' @importFrom utils type.convert
 read_export_table <- function(data_dir, file_name, export_options,
                               add_pat_id = TRUE, add_centre = TRUE, add_visitname = TRUE,
                               casenodes_table, centre_table, visitplan_table,

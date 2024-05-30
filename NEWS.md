@@ -1,4 +1,4 @@
-# secuTrialR 1.3.2
+# secuTrialR 1.3.2 and 1.3.3
 
 * clear some notes and warnings in preparation for CRAN submission (#265)
 

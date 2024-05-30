@@ -45,11 +45,12 @@ write_secuTrial.secuTrialdata <- function(object, format = "dta", metadata = FAL
 }
 
 #' @name write_secuTrial
-#' @param df a data.frame
+#' @param object a data.frame
 #' @param filename file name
 #' @param path directory where the files should be saved
-write_secuTrial.data.frame <- function(df, filename, path = "", format = "dta", ...) {
-  df <- convertnames(df, format)
+#' @export
+write_secuTrial.data.frame <- function(object, filename, path = "", format = "dta", ...) {
+  df <- convertnames(object, format)
   format2 <- format
   out <- file.path(path, paste0(filename, ".", format2))
   if (format == "dta") haven::write_dta(df, out, ...)

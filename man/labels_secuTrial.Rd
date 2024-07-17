@@ -9,7 +9,7 @@
 \alias{units<-}
 \title{Get variable labels for secuTrialdata objects}
 \usage{
-labels_secuTrial(object, form = NULL)
+labels_secuTrial(object, form = NULL, multiple_labels_flag)
 
 label_secuTrial(object, ...)
 
